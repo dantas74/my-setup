@@ -2,18 +2,21 @@
 - name: Configuring computer
   hosts: localhost
   become: true
-  vars:
-    my_username: dantas
-    my_main_group: dantas
+  vars_files:
+    - vars.yml
 
   tasks:
     - name: Project management config
       include_tasks:
         file: src/steps/project-management/main.yml
 
-    - name: Basic dev tools config
+    - name: Python dev tools config
       include_tasks:
-        file: src/steps/dev-tools/main.yml
+        file: src/steps/python-dev-tools/main.yml
+
+    - name: Docker config
+      include_tasks:
+        file: src/steps/docker/main.yml
 
   handlers:
     - include: src/handlers.yml

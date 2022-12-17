@@ -1,0 +1,9 @@
+main_packages:
+  - vim
+  - python3
+  - python3-pip
+  - virtualenv
+
+auxiliary_packages:
+  - zip
+  - unzip

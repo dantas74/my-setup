@@ -1,9 +1,0 @@
-os_dependencies:
-  - vim
-  - zip
-  - unzip
-  - python3
-  - python3-pip
-  - virtualenv
-  - gnupg
-  - software-properties-common

@@ -1,0 +1,31 @@
+---
+- name: Setup cron service
+  service:
+    name: cron
+    state: "{{ 'started' if docker_cleanup_script else 'stopped' }}"
+
+- name: Copy Docker cleanup script
+  copy:
+    src: files/clean-docker.sh
+    dest: "{{ docker_vars.cron_vars.script_path }}"
+    owner: root
+    group: root
+    mode: 755
+
+- name: Add docker cleanup script to cron
+  cron:
+    name: "{{ docker_vars.cron_vars.name }}"
+    state: present
+    user: root
+    cron_file: "{{ docker_vars.cron_vars.name }}"
+    job: "{{ docker_vars.cron_vars.script_path }}"
+    hour: "12"
+    weekday: "6"
+  when: "{{ docker_cleanup_script }}"
+
+- name: Removing docker cleanup script from cron
+  cron:
+    name: "{{ docker_vars.cron_vars.name }}"
+    state: absent
+    cron_file: "{{ docker_vars.cron_vars.name }}"
+  when: "{{ not docker_cleanup_script }}"

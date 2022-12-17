@@ -10,3 +10,10 @@
     state: directory
     owner: "{{ my_username }}"
     group: "{{ my_main_group }}"
+
+- name: Creating scripts folder
+  file:
+    name: /opt/scripts
+    state: directory
+    owner: root
+    group: root

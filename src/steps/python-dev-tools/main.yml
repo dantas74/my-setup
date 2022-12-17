@@ -1,7 +1,7 @@
 ---
-- name: Injecting dependencies vars
+- name: Injecting python dev tools vars
   include_vars:
-    name: dependencies_vars
+    name: python_dev_tools
     file: vars.yml
 
 - name: Installing development dependencies
@@ -9,4 +9,4 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
-  loop: "{{ dependencies_vars.os_dependencies }}"
+  loop: "{{ python_dev_tools.main_packages + python_dev_tools.auxiliary_packages }}"

@@ -1,0 +1,16 @@
+---
+pre_requirements:
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+
+main_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+cron_vars:
+  name: ansible_docker-cleanup
+  script_path: /opt/scripts/docker-cleanup.sh
+  description: Clean up of docker

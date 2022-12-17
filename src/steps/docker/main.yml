@@ -1,0 +1,40 @@
+---
+- name: Injecting docker vars
+  include_vars:
+    name: docker_vars
+    file: vars.yml
+
+- name: Installing pre requirements
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ docker_vars.pre_requirements }}"
+
+- name: Adding Docker repo key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Adding Docker repo to sources.list
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Installing Docker packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ docker_vars.main_packages }}"
+
+- name: Adding main user to Docker group
+  user:
+    name: "{{ my_username }}"
+    group: docker
+    state: present
+    append: true
+
+- name: Docker cron tasks
+  include_tasks: 
+    file: cron_tasks.yml
