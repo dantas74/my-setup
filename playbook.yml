@@ -2,7 +2,10 @@
 - name: Configuring computer
   hosts: localhost
   become: true
+  vars:
+    my_username: dantas
+    my_main_group: dantas
   tasks:
     - name: Pre config
-      include_tasks: src/steps/pre-config/tasks.yml
-      include_vars: src/steps/pre-config/vars.yml
+      include_tasks:
+        file: src/steps/pre-config/main.yml

@@ -1,0 +1,10 @@
+---
+- name: Injecting pre config vars
+  include_vars:
+    file: vars.yml
+    name: vars
+
+- name: Creating projects folder
+  file:
+    name: "{{ vars.project_path }}"
+    state: directory
