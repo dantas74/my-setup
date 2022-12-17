@@ -1,17 +1,17 @@
 ---
-- name: Injecting pre config vars
+- name: Inject pre config vars
   include_vars:
     name: pre_config_vars
     file: vars.yml
 
-- name: Creating projects folder
+- name: Create projects folder
   file:
     name: "{{ pre_config_vars.project_path }}"
     state: directory
     owner: "{{ my_username }}"
     group: "{{ my_main_group }}"
 
-- name: Creating scripts folder
+- name: Create scripts folder
   file:
     name: /opt/scripts
     state: directory

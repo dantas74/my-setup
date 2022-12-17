@@ -23,7 +23,7 @@
     weekday: "6"
   when: "{{ docker_cleanup_script }}"
 
-- name: Removing docker cleanup script from cron
+- name: Remove docker cleanup script from cron
   cron:
     name: "{{ docker_vars.cron_vars.name }}"
     state: absent

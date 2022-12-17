@@ -1,10 +1,10 @@
 ---
-- name: Injecting python dev tools vars
+- name: Inject python dev tools vars
   include_vars:
     name: python_dev_tools
     file: vars.yml
 
-- name: Installing development dependencies
+- name: Install development dependencies
   apt:
     name: "{{ item }}"
     state: present
