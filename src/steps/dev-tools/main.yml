@@ -1,0 +1,12 @@
+---
+- name: Injecting dependencies vars
+  include_vars:
+    name: dependencies_vars
+    file: vars.yml
+
+- name: Installing development dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ dependencies_vars.os_dependencies }}"

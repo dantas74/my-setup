@@ -5,7 +5,15 @@
   vars:
     my_username: dantas
     my_main_group: dantas
+
   tasks:
-    - name: Pre config
+    - name: Project management config
       include_tasks:
-        file: src/steps/pre-config/main.yml
+        file: src/steps/project-management/main.yml
+
+    - name: Basic dev tools config
+      include_tasks:
+        file: src/steps/dev-tools/main.yml
+
+  handlers:
+    - include: src/handlers.yml
