@@ -4,7 +4,7 @@
     name: docker_vars
     file: vars.yml
 
-- name: Install pre requirements
+- name: Install Docker pre requirements
   apt:
     name: "{{ item }}"
     state: present
@@ -35,6 +35,4 @@
     state: present
     append: true
 
-- name: Docker cron tasks
-  include_tasks: 
-    file: cron_tasks.yml
+- import_tasks: cron_tasks.yml

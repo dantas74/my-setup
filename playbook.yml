@@ -21,5 +21,9 @@
       include_tasks:
         file: src/steps/docker/main.yml
 
+    - name: Installing softwares
+      include_tasks:
+        file: src/steps/softwares/main.yml
+
   handlers:
     - include: src/handlers.yml

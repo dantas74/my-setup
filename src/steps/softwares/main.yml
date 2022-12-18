@@ -1,0 +1,14 @@
+---
+- name: Inject softwares vars
+  include_vars:
+    name: software_vars
+    file: vars.yml
+
+- name: Install softwares prereqs
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ software_vars.prereqs }}"
+
+- import_tasks: vscode_tasks.yml
