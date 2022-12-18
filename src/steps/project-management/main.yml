@@ -1,5 +1,5 @@
 ---
-- name: Inject pre config vars
+- name: Inject project management vars
   include_vars:
     name: pre_config_vars
     file: vars.yml

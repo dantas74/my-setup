@@ -1,0 +1,45 @@
+---
+- name: Inject cloud tools vars
+  include_vars:
+    name: cloud_vars
+    file: vars.yml
+
+- name: Gather package facts
+  package_facts:
+    manager: auto
+
+- name: Install terraform prereqs
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ cloud_vars.prereqs }}"
+
+- name: Add Terraform repo key
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    state: present
+
+- name: Add Terraform to sources.list
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Install Terraform
+  apt:
+    name: terraform
+    state: present
+    update_cache: yes
+
+- name: Unarchive aws cli zip
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp
+    remote_src: yes
+  when: "{{ 'awscli' not in ansible_facts.packages }}"
+
+- name: Install aws cli
+  shell:
+    cmd: /tmp/aws/install
+  when: "{{ 'awscli' not in ansible_facts.packages }}"

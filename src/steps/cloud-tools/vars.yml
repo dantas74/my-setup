@@ -1,0 +1,4 @@
+---
+prereqs:
+  - gnupg
+  - software-properties-common

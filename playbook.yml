@@ -13,6 +13,10 @@
       include_tasks:
         file: src/steps/python-dev-tools/main.yml
 
+    - name: Cloud tools installation
+      include_tasks:
+        file: src/steps/cloud-tools/main.yml
+
     - name: Docker config
       include_tasks:
         file: src/steps/docker/main.yml
