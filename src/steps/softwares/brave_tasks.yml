@@ -1,1 +1,21 @@
 ---
+- name: Install brave key
+  get_url:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    dest: /etc/apt/keyrings/brave-browser-archive-keyring.asc
+    mode: "0644"
+    force: yes
+
+- name: Install brave repo
+  apt_repository:
+    repo: >-
+      deb [arch=amd64 signed-by=/etc/apt/keyrings/brave-browser-archive-keyring.asc] https://brave-browser-apt-release.s3.brave.com/ stable main
+    filename: brave_browser
+    state: present
+    update_cache: no
+
+- name: Install brave
+  apt:
+    name: brave-browser
+    state: present
+    update_cache: yes

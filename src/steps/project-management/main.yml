@@ -20,7 +20,7 @@
 
 - name: Create keyrings folder
   file:
-    name: /usr/share/keyrings
+    name: /etc/apt/keyrings
     state: directory
     owner: root
     group: root

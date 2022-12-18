@@ -12,3 +12,9 @@
   loop: "{{ software_vars.prereqs }}"
 
 - import_tasks: vscode_tasks.yml
+
+- import_tasks: brave_tasks.yml
+
+- import_tasks: spotify_tasks.yml
+
+- import_tasks: drawio_tasks.yml

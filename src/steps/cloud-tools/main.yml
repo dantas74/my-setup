@@ -18,13 +18,13 @@
 - name: Install Terraform repo key
   get_url:
     url: https://apt.releases.hashicorp.com/gpg
-    dest: /usr/share/keyrings/hashicorp-archive-keyring.gpg
-    mode: '0644'
+    dest: /etc/apt/keyrings/hashicorp-archive-keyring.asc
+    mode: "0644"
     force: yes
 
 - name: Add Terraform to sources.list
   apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    repo: "deb [signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.asc] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     filename: terraform
     state: present
     update_cache: no

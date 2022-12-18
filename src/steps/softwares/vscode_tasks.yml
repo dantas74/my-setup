@@ -2,14 +2,14 @@
 - name: Install vscode key
   get_url:
     url: https://packages.microsoft.com/keys/microsoft.asc
-    dest: /usr/share/keyrings/microsoft.gpg
-    mode: '0644'
+    dest: /etc/apt/keyrings/microsoft.asc
+    mode: "0644"
     force: yes
 
 - name: Install vscode repo
   apt_repository:
     repo: >-
-      deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main
+      deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
     filename: vscode
     state: present
     update_cache: no
