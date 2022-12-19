@@ -10,3 +10,11 @@ prereqs:
   - libdrm2
   - libgbm1
   - libxshmfence1
+  - curl
+  - gpg
+  - snapd
+
+snap_softwares:
+  - spotify
+  - drawio
+  - slack

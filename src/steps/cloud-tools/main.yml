@@ -15,25 +15,10 @@
     update_cache: yes
   loop: "{{ cloud_vars.prereqs }}"
 
-- name: Install Terraform repo key
-  get_url:
-    url: https://apt.releases.hashicorp.com/gpg
-    dest: /etc/apt/keyrings/hashicorp-archive-keyring.asc
-    mode: "0644"
-    force: yes
-
-- name: Add Terraform to sources.list
-  apt_repository:
-    repo: "deb [signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.asc] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
-    filename: terraform
-    state: present
-    update_cache: no
-
-- name: Install Terraform
-  apt:
-    name: terraform
-    state: present
-    update_cache: yes
+- name: Install terraform
+  script:
+    cmd: scripts/install-terraform.sh
+    creates: /usr/lock/terraform.lock
 
 - name: Unarchive aws cli zip
   unarchive:

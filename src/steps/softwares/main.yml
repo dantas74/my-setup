@@ -11,10 +11,18 @@
     update_cache: yes
   loop: "{{ software_vars.prereqs }}"
 
-- import_tasks: vscode_tasks.yml
+- name: Install vscode
+  script:
+    cmd: scripts/install-vscode.sh
+    creates: /usr/lock/vscode.lock
 
-- import_tasks: brave_tasks.yml
+- name: Install brave
+  script:
+    cmd: scripts/install-brave.sh
+    creates: /usr/lock/brave.lock
 
-- import_tasks: spotify_tasks.yml
-
-- import_tasks: drawio_tasks.yml
+- name: Install snap softwares
+  snap:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ software_vars.snap_softwares }}"
