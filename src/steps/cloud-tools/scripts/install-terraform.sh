@@ -9,6 +9,6 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
     sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 sudo apt update
-sudo apt install terraform
+sudo apt install terraform -y
 
 sudo install -Dv /dev/null /usr/lock/terraform.lock

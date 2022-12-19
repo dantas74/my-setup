@@ -1,12 +1,7 @@
 ---
-- name: Setup cron service
-  service:
-    name: cron
-    state: "{{ 'started' if docker_cleanup_script else 'stopped' }}"
-
 - name: Copy Docker cleanup script
   copy:
-    src: files/clean-docker.sh
+    src: scripts/clean-docker.sh
     dest: "{{ docker_vars.cron_vars.script_path }}"
     owner: root
     group: root

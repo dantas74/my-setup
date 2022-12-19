@@ -17,10 +17,3 @@
     state: directory
     owner: root
     group: root
-
-- name: Create keyrings folder
-  file:
-    name: /etc/apt/keyrings
-    state: directory
-    owner: root
-    group: root
