@@ -25,4 +25,5 @@
   snap:
     name: "{{ item }}"
     state: present
-  loop: "{{ software_vars.snap_softwares }}"
+    classic: "{{ item in classic_snap_softwares: }}"
+  loop: "{{ software_vars.snap_softwares + classic_snap_softwares }}"
