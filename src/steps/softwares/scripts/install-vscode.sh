@@ -9,5 +9,3 @@ sudo apt update
 sudo apt install code -y
 
 rm -f /tmp/packages.microsoft.gpg
-
-sudo install -Dv /dev/null /usr/lock/vscode.lock

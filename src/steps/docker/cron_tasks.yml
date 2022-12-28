@@ -16,11 +16,11 @@
     job: "{{ docker_vars.cron_vars.script_path }}"
     hour: "12"
     weekday: "6"
-  when: "{{ docker_cleanup_script }}"
+  when: docker_cleanup_script
 
 - name: Remove docker cleanup script from cron
   cron:
     name: "{{ docker_vars.cron_vars.name }}"
     state: absent
     cron_file: "{{ docker_vars.cron_vars.name }}"
-  when: "{{ not docker_cleanup_script }}"
+  when: not docker_cleanup_script

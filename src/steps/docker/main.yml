@@ -14,12 +14,12 @@
 - name: Install Docker
   script:
     cmd: scripts/install-docker.sh
-    creates: /usr/lock/docker.lock
+    creates: /usr/bin/docker
 
 - name: Add main user to Docker group
   user:
     name: "{{ my_username }}"
-    group: docker
+    groups: "{{ [my_main_group, 'docker'] }}"
     state: present
     append: true
 

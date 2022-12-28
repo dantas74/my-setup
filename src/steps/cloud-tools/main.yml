@@ -4,10 +4,6 @@
     name: cloud_vars
     file: vars.yml
 
-- name: Gather package facts
-  package_facts:
-    manager: auto
-
 - name: Install terraform prereqs
   apt:
     name: "{{ item }}"
@@ -18,16 +14,12 @@
 - name: Install terraform
   script:
     cmd: scripts/install-terraform.sh
-    creates: /usr/lock/terraform.lock
+    creates: /usr/bin/terraform
 
 - name: Unarchive aws cli zip
   unarchive:
     src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
     dest: /tmp
     remote_src: yes
-  when: "{{ 'awscli' not in ansible_facts.packages }}"
-
-- name: Install aws cli
-  shell:
-    cmd: /tmp/aws/install
-  when: "{{ 'awscli' not in ansible_facts.packages }}"
+  notify:
+    - Install aws cli

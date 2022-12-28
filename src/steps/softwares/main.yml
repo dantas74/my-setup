@@ -14,16 +14,16 @@
 - name: Install vscode
   script:
     cmd: scripts/install-vscode.sh
-    creates: /usr/lock/vscode.lock
+    creates: /usr/bin/code
 
 - name: Install brave
   script:
     cmd: scripts/install-brave.sh
-    creates: /usr/lock/brave.lock
+    creates: /usr/bin/brave-browser
 
 - name: Install snap softwares
   snap:
     name: "{{ item }}"
     state: present
-    classic: "{{ item in classic_snap_softwares: }}"
-  loop: "{{ software_vars.snap_softwares + classic_snap_softwares }}"
+    classic: "{{ item in software_vars.classic_snap_softwares }}"
+  loop: "{{ software_vars.snap_softwares + software_vars.classic_snap_softwares }}"

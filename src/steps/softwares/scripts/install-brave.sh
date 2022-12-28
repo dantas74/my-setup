@@ -6,5 +6,3 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 
 sudo apt update
 sudo apt install brave-browser -y
-
-sudo install -Dv /dev/null /usr/lock/brave.lock

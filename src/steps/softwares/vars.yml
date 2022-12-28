@@ -18,7 +18,6 @@ snap_softwares:
   - spotify
   - drawio
   - slack
-  - notion-snap
 
 classic_snap_softwares:
   - pycharm-professional
