@@ -7,3 +7,4 @@ main_packages:
 auxiliary_packages:
   - zip
   - unzip
+  - net-tools
