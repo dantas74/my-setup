@@ -9,9 +9,9 @@
       include_tasks:
         file: src/steps/project-management/main.yml
 
-    - name: Python dev tools config
+    - name: Dev tools config
       include_tasks:
-        file: src/steps/python-dev-tools/main.yml
+        file: src/steps/dev-tools/main.yml
 
     - name: Cloud tools installation
       include_tasks:

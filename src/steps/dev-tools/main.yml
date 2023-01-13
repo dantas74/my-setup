@@ -4,6 +4,11 @@
     name: python_dev_tools
     file: vars.yml
 
+- name: Install Nodejs
+  script:
+    cmd: scripts/install-nodejs.sh
+    creates: /usr/bin/node
+
 - name: Install development dependencies
   apt:
     name: "{{ item }}"
