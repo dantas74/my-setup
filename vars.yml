@@ -3,3 +3,5 @@ my_main_group: dantas
 
 ## Warning, this script clean up all docker images and containers, including the ones in use at the moment ##
 docker_cleanup_script: yes
+
+install_nodejs: no
