@@ -16,6 +16,11 @@
     cmd: scripts/install-terraform.sh
     creates: /usr/bin/terraform
 
+- name: Install Packer
+  script:
+    cmd: scripts/install-packer.sh
+    creates: /usr/local/bin/packer
+
 - name: Unarchive aws cli zip
   unarchive:
     src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
