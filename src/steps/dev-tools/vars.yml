@@ -3,6 +3,8 @@ main_packages:
   - python3
   - python3-pip
   - virtualenv
+  - virtualbox
+  - vagrant
 
 auxiliary_packages:
   - zip
